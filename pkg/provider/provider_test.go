@@ -26,6 +26,15 @@ var project1 = &types.Project{
 		Branch: "main",
 	},
 	WorkspaceId: "123",
+	EnvVars: map[string]string{
+		"DAYTONA_WS_ID":                     "123",
+		"DAYTONA_WS_PROJECT_NAME":           "test",
+		"DAYTONA_WS_PROJECT_REPOSITORY_URL": "https://github.com/daytonaio/daytona",
+		"DAYTONA_SERVER_API_KEY":            "api-key-test",
+		"DAYTONA_SERVER_VERSION":            "latest",
+		"DAYTONA_SERVER_URL":                "http://localhost:3001",
+		"DAYTONA_SERVER_API_URL":            "http://localhost:3000",
+	},
 }
 
 var workspace = &types.Workspace{
