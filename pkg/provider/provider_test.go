@@ -4,8 +4,9 @@ import (
 	"encoding/json"
 	"testing"
 
+	"github.com/daytonaio/daytona/pkg/gitprovider"
 	daytona_provider "github.com/daytonaio/daytona/pkg/provider"
-	"github.com/daytonaio/daytona/pkg/types"
+	"github.com/daytonaio/daytona/pkg/workspace"
 
 	"github.com/daytonaio/daytona-provider-sample/pkg/provider"
 	provider_types "github.com/daytonaio/daytona-provider-sample/pkg/types"
@@ -17,13 +18,12 @@ var targetOptions = &provider_types.TargetOptions{
 }
 var optionsString string
 
-var project1 = &types.Project{
+var project1 = &workspace.Project{
 	Name: "test",
-	Repository: &types.Repository{
-		Id:     "123",
-		Url:    "https://github.com/daytonaio/daytona",
-		Name:   "daytona",
-		Branch: "main",
+	Repository: &gitprovider.GitRepository{
+		Id:   "123",
+		Url:  "https://github.com/daytonaio/daytona",
+		Name: "daytona",
 	},
 	WorkspaceId: "123",
 	EnvVars: map[string]string{
@@ -37,11 +37,11 @@ var project1 = &types.Project{
 	},
 }
 
-var workspace = &types.Workspace{
+var workspace1 = &workspace.Workspace{
 	Id:     "123",
 	Name:   "test",
 	Target: "local",
-	Projects: []*types.Project{
+	Projects: []*workspace.Project{
 		project1,
 	},
 }
@@ -49,7 +49,7 @@ var workspace = &types.Workspace{
 func TestCreateWorkspace(t *testing.T) {
 	wsReq := &daytona_provider.WorkspaceRequest{
 		TargetOptions: optionsString,
-		Workspace:     workspace,
+		Workspace:     workspace1,
 	}
 
 	_, err := sampleProvider.CreateWorkspace(wsReq)
@@ -61,7 +61,7 @@ func TestCreateWorkspace(t *testing.T) {
 func TestGetWorkspaceInfo(t *testing.T) {
 	wsReq := &daytona_provider.WorkspaceRequest{
 		TargetOptions: optionsString,
-		Workspace:     workspace,
+		Workspace:     workspace1,
 	}
 
 	workspaceInfo, err := sampleProvider.GetWorkspaceInfo(wsReq)
@@ -83,7 +83,7 @@ func TestGetWorkspaceInfo(t *testing.T) {
 func TestDestroyWorkspace(t *testing.T) {
 	wsReq := &daytona_provider.WorkspaceRequest{
 		TargetOptions: optionsString,
-		Workspace:     workspace,
+		Workspace:     workspace1,
 	}
 
 	_, err := sampleProvider.DestroyWorkspace(wsReq)

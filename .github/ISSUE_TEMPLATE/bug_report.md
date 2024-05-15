@@ -25,7 +25,7 @@ If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
  - OS: [e.g. Ubuntu 22.04]
- - Daytona Version: [e.g. v0.1.0]
+ - Daytona Version: [e.g. v0.0.1]
  - Provider Version: [e.g. v0.1.0]
 
 **Additional context**
