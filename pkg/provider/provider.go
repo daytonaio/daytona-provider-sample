@@ -12,6 +12,7 @@ import (
 	"github.com/daytonaio/daytona/pkg/provider"
 	"github.com/daytonaio/daytona/pkg/provider/util"
 	"github.com/daytonaio/daytona/pkg/workspace"
+	"github.com/daytonaio/daytona/pkg/workspace/project"
 )
 
 type SampleProvider struct {
@@ -107,7 +108,7 @@ func (p SampleProvider) GetWorkspaceInfo(workspaceReq *provider.WorkspaceRequest
 		ProviderMetadata: providerMetadata,
 	}
 
-	projectInfos := []*workspace.ProjectInfo{}
+	projectInfos := []*project.ProjectInfo{}
 	for _, project := range workspaceReq.Workspace.Projects {
 		projectInfo, err := p.GetProjectInfo(&provider.ProjectRequest{
 			TargetOptions: workspaceReq.TargetOptions,
@@ -149,7 +150,7 @@ func (p SampleProvider) DestroyProject(projectReq *provider.ProjectRequest) (*ut
 	return new(util.Empty), nil
 }
 
-func (p SampleProvider) GetProjectInfo(projectReq *provider.ProjectRequest) (*workspace.ProjectInfo, error) {
+func (p SampleProvider) GetProjectInfo(projectReq *provider.ProjectRequest) (*project.ProjectInfo, error) {
 	providerMetadata := provider_types.ProjectMetadata{
 		Property: projectReq.Project.Name,
 	}
@@ -159,7 +160,7 @@ func (p SampleProvider) GetProjectInfo(projectReq *provider.ProjectRequest) (*wo
 		return nil, err
 	}
 
-	projectInfo := &workspace.ProjectInfo{
+	projectInfo := &project.ProjectInfo{
 		Name:             projectReq.Project.Name,
 		IsRunning:        true,
 		Created:          "Created at ...",
