@@ -55,7 +55,7 @@ func (p SampleProvider) GetTargetManifest() (*provider.ProviderTargetManifest, e
 	return provider_types.GetTargetManifest(), nil
 }
 
-func (p SampleProvider) GetDefaultTargets() (*[]provider.ProviderTarget, error) {
+func (p SampleProvider) GetPresetTargets() (*[]provider.ProviderTarget, error) {
 	info, err := p.GetInfo()
 	if err != nil {
 		return nil, err

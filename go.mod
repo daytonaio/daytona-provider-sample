@@ -3,7 +3,7 @@ module github.com/daytonaio/daytona-provider-sample
 go 1.23.0
 
 require (
-	github.com/daytonaio/daytona v0.35.0
+	github.com/daytonaio/daytona v0.40.0
 	github.com/hashicorp/go-hclog v1.6.3
 	github.com/hashicorp/go-plugin v1.6.0
 	github.com/sirupsen/logrus v1.9.3
