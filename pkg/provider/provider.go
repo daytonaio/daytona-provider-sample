@@ -51,6 +51,10 @@ func (p SampleProvider) GetInfo() (provider.ProviderInfo, error) {
 	}, nil
 }
 
+func (p SampleProvider) CheckRequirements() (*[]provider.RequirementStatus, error) {
+	return new([]provider.RequirementStatus), nil
+}
+
 func (p SampleProvider) GetTargetManifest() (*provider.ProviderTargetManifest, error) {
 	return provider_types.GetTargetManifest(), nil
 }
